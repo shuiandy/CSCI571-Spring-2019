@@ -1,0 +1,218 @@
+@font-face {
+  font-family: "Futura PT Heavy";
+  src: url("FuturaPT-Heavy.eot");
+  src: url("FuturaPT-Heavy.eot?#iefix") format("embedded-opentype"),
+    url("FuturaPT-Heavy.woff") format("woff"),
+    url("FuturaPT-Heavy.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+.page {
+  height: 1210px;
+  width: 1205px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: auto;
+  perspective: 300px;
+}
+
+.page__group {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.page__layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.page__layer--base {
+  z-index: 4;
+}
+
+.page__layer--back {
+  z-index: 3;
+}
+
+.front-layer {
+  /* margin: 0 auto; */
+  width: 100%;
+  text-align: center;
+}
+
+.front-layer img {
+  /* vertical-align: -webkit-baseline-middle; */
+  width: 41.5%;
+  overflow: hidden;
+  display: inline-block;
+  height: 500px;
+  object-fit: none;
+  margin: 8px;
+}
+
+ul {
+  list-style: none;
+  float: right;
+  padding-right: 8.4%;
+}
+
+ul li {
+  float: left;
+  color: white;
+  font: 13px "Futura PT Heavy";
+  line-height: 80px;
+  text-align: left;
+  padding: 4.2% 0 0;
+  letter-spacing: 2.6px;
+  margin-right: 25.5px;
+}
+
+banner {
+  color: white;
+  border: none;
+  position: relative;
+  left: 8%;
+  top: 5.4%;
+  letter-spacing: 5px;
+  font: 38px "Futura PT Heavy";
+  line-height: 10px;
+  float: left;
+}
+
+h1 {
+  position: absolute;
+  text-align: center;
+  left: 30.65%;
+  top: 26.7%;
+  color: white;
+  letter-spacing: 0.9px;
+  font: 109px/110px "Futura PT Heavy";
+}
+
+h11 {
+  position: absolute;
+  text-align: center;
+  left: 39.2%;
+  top: 37.8%;
+  color: white;
+  letter-spacing: 0.6px;
+  font: 110px/105px "Futura PT Heavy";
+}
+
+h2 {
+  position: absolute;
+  text-align: center;
+  left: 24%;
+  top: 56%;
+  color: white;
+  font: 23px "Mandali";
+  line-height: 35px;
+  letter-spacing: 0.3px;
+}
+
+h3 {
+  text-align: left;
+  color: gray;
+  font: 15px/25px "Mandali";
+  letter-spacing: 0.2px;
+  max-width: 57vw;
+  margin-left: 30%;
+  margin-top: 40px;
+}
+
+h4 {
+  position: absolute;
+  text-align: center;
+  left: 23%;
+  top: 46%;
+  color: white;
+  font: 24px/36px "Mandali";
+}
+
+button {
+  background-color: white;
+  border: none;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font: 14px "Futura PT Heavy";
+  left: 43.5%;
+  right: 40%;
+  top: 74.2%;
+  position: absolute;
+  width: 160px;
+  height: 60px;
+}
+
+.arrow {
+  position: absolute;
+  left: 49.5%;
+  top: 86%;
+  margin: -3px 0 0 -8px;
+  border-left: 2px solid;
+  border-top: 2px solid;
+  width: 25px;
+  height: 25px;
+  transform: rotate(225deg);
+  color: white;
+}
+
+#group1 {
+  z-index: 3;
+  height: 1010px;
+}
+
+#group1 .page__layer--back {
+  background-image: url(http://csci571.com/hw/hw3/images/snow1.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transform: translateZ(-285px) scale(2.14);
+}
+
+#group2 {
+  z-index: 4;
+  height: 100vh;
+}
+
+#group2 .page__layer--base {
+  background-color: white;
+  padding: 6em 0 7em;
+  position: relative;
+}
+
+#group3 {
+  z-index: 3;
+  height: 100vh;
+  padding: 110px;
+}
+
+#group3 .page__layer--back {
+  background-image: url(http://csci571.com/hw/hw3/images/snow6.jpg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: translateZ(-290px) scale(3.15);
+}
+
+#group4 {
+  z-index: 4;
+  /* padding: 100px; */
+  height: 600px;
+}
+
+#group4 .page__layer--base {
+  background-color: white;
+  transform: translateY(-240px);
+}

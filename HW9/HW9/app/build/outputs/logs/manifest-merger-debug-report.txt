@@ -1,0 +1,188 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:2:1-24:12
+MERGED from [com.android.support:design:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/53054dee2162c3d700b7871e552fde7f/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/5c45dcd36f6bf8dd53442d7e663b1d2f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/fe87608989fd055583e416edd0466777/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-v4:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/433b04f331903ab96957666d145fa261/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/6458326569c6aa92b113d80fc4219a3e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.volley:volley:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/3a6933c409516642606d90103087a5da/AndroidManifest.xml:2:1-11:12
+MERGED from [net.steamcrafted:materialiconlib:1.1.5] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/4b0898c1f9d67b67979768416dff685e/AndroidManifest.xml:2:1-14:12
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/63ebc78c8e120c369d6727159b758bbf/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/28a03558cbb75c1550cc57c5cdfcaaaf/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/b228a065b152d08b01d1c68659988729/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/b37582c8bd244945aa0bf306ae6888db/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/9919a931e11dd0e29698d39a30fdcfd7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/4c3a8e149df8c6723d2cba3b22282599/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/db80e9368116de4a05b58e096bc4a989/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/55dc839ce1acd17eabd682d13a02003d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/4825ae578bec57fa3377c885333cc410/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/604ed5c3edd817e7e55b555c44cd64a1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/4647a10c644a7fe0d496c783fa6e2c9f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/522eacdbc2d3bc48e4a4d99ceb9de56a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/d02ab821ad75955f5aa242de97c6a79c/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/1574bce3a71ae7b78525ec7f32470d16/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/95942fc3554d05daabe9b987b31d0602/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/99aba3e245527693bb1462fbce6d3539/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/216e90cc0551cf1be4a1c3de4d837156/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/dc891780628320bc903efbbca3873a5a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/9a75918420b4733c84aeaa64dd1890f6/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/7050925664cf5c7901730d8c5399ff01/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/95601578075e2555e2e05d67a0d47d36/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/6de4a79d5b9d000149e937db36d5791a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/f1ca0b5ec4a58373176ee8fd2466f04f/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/2d2a2443c384502df88c579e6e1525cf/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/36604bdda2e8558a80f90c3f284101bb/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/25f0ae8d008a8d90aa929207457f0ff0/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/151aca670095316ada859e7d2b7b9e03/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/0b3efdca7a4abf6b3da90091bb884c6c/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:2:1-24:12
+INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:2:1-24:12
+	package
+		ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:3:5-36
+		INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml
+		ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:2:1-24:12
+		INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml
+		ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:2:1-24:12
+		INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:5:5-22:19
+MERGED from [com.android.support:design:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/53054dee2162c3d700b7871e552fde7f/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/53054dee2162c3d700b7871e552fde7f/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/fe87608989fd055583e416edd0466777/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/fe87608989fd055583e416edd0466777/AndroidManifest.xml:9:5-20
+MERGED from [com.android.volley:volley:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/3a6933c409516642606d90103087a5da/AndroidManifest.xml:9:5-20
+MERGED from [com.android.volley:volley:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/3a6933c409516642606d90103087a5da/AndroidManifest.xml:9:5-20
+MERGED from [net.steamcrafted:materialiconlib:1.1.5] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/4b0898c1f9d67b67979768416dff685e/AndroidManifest.xml:11:5-12:19
+MERGED from [net.steamcrafted:materialiconlib:1.1.5] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/4b0898c1f9d67b67979768416dff685e/AndroidManifest.xml:11:5-12:19
+MERGED from [com.android.support:support-compat:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/99aba3e245527693bb1462fbce6d3539/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/99aba3e245527693bb1462fbce6d3539/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/216e90cc0551cf1be4a1c3de4d837156/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/216e90cc0551cf1be4a1c3de4d837156/AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/99aba3e245527693bb1462fbce6d3539/AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:11:9-40
+activity#com.shuaihu.homework9.activity.MainActivity
+ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:12:9-21:20
+	android:label
+		ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:14:13-45
+	android:theme
+		ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:15:13-56
+	android:name
+		ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:13:13-50
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:16:13-20:29
+action#android.intent.action.MAIN
+ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:17:17-69
+	android:name
+		ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:17:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:19:17-77
+	android:name
+		ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml:19:27-74
+uses-sdk
+INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml
+INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:design:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/53054dee2162c3d700b7871e552fde7f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/53054dee2162c3d700b7871e552fde7f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/5c45dcd36f6bf8dd53442d7e663b1d2f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/5c45dcd36f6bf8dd53442d7e663b1d2f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/fe87608989fd055583e416edd0466777/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/fe87608989fd055583e416edd0466777/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-v4:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/433b04f331903ab96957666d145fa261/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/433b04f331903ab96957666d145fa261/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/6458326569c6aa92b113d80fc4219a3e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/6458326569c6aa92b113d80fc4219a3e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.volley:volley:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/3a6933c409516642606d90103087a5da/AndroidManifest.xml:7:5-43
+MERGED from [com.android.volley:volley:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/3a6933c409516642606d90103087a5da/AndroidManifest.xml:7:5-43
+MERGED from [net.steamcrafted:materialiconlib:1.1.5] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/4b0898c1f9d67b67979768416dff685e/AndroidManifest.xml:7:5-9:41
+MERGED from [net.steamcrafted:materialiconlib:1.1.5] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/4b0898c1f9d67b67979768416dff685e/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/63ebc78c8e120c369d6727159b758bbf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/63ebc78c8e120c369d6727159b758bbf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/28a03558cbb75c1550cc57c5cdfcaaaf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/28a03558cbb75c1550cc57c5cdfcaaaf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/b228a065b152d08b01d1c68659988729/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/b228a065b152d08b01d1c68659988729/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/b37582c8bd244945aa0bf306ae6888db/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/b37582c8bd244945aa0bf306ae6888db/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/9919a931e11dd0e29698d39a30fdcfd7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/9919a931e11dd0e29698d39a30fdcfd7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/4c3a8e149df8c6723d2cba3b22282599/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/4c3a8e149df8c6723d2cba3b22282599/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/db80e9368116de4a05b58e096bc4a989/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/db80e9368116de4a05b58e096bc4a989/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/55dc839ce1acd17eabd682d13a02003d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/55dc839ce1acd17eabd682d13a02003d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/4825ae578bec57fa3377c885333cc410/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/4825ae578bec57fa3377c885333cc410/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/604ed5c3edd817e7e55b555c44cd64a1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/604ed5c3edd817e7e55b555c44cd64a1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/4647a10c644a7fe0d496c783fa6e2c9f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/4647a10c644a7fe0d496c783fa6e2c9f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/522eacdbc2d3bc48e4a4d99ceb9de56a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/522eacdbc2d3bc48e4a4d99ceb9de56a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/d02ab821ad75955f5aa242de97c6a79c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/d02ab821ad75955f5aa242de97c6a79c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/1574bce3a71ae7b78525ec7f32470d16/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/1574bce3a71ae7b78525ec7f32470d16/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/95942fc3554d05daabe9b987b31d0602/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/95942fc3554d05daabe9b987b31d0602/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/99aba3e245527693bb1462fbce6d3539/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/99aba3e245527693bb1462fbce6d3539/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/216e90cc0551cf1be4a1c3de4d837156/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/216e90cc0551cf1be4a1c3de4d837156/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/dc891780628320bc903efbbca3873a5a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/dc891780628320bc903efbbca3873a5a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/9a75918420b4733c84aeaa64dd1890f6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/9a75918420b4733c84aeaa64dd1890f6/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/7050925664cf5c7901730d8c5399ff01/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/7050925664cf5c7901730d8c5399ff01/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/95601578075e2555e2e05d67a0d47d36/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/95601578075e2555e2e05d67a0d47d36/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/6de4a79d5b9d000149e937db36d5791a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/6de4a79d5b9d000149e937db36d5791a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/f1ca0b5ec4a58373176ee8fd2466f04f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/f1ca0b5ec4a58373176ee8fd2466f04f/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/2d2a2443c384502df88c579e6e1525cf/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/2d2a2443c384502df88c579e6e1525cf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/36604bdda2e8558a80f90c3f284101bb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/36604bdda2e8558a80f90c3f284101bb/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/25f0ae8d008a8d90aa929207457f0ff0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/25f0ae8d008a8d90aa929207457f0ff0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/151aca670095316ada859e7d2b7b9e03/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/151aca670095316ada859e7d2b7b9e03/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/0b3efdca7a4abf6b3da90091bb884c6c/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/shuiandy/.gradle/caches/transforms-2/files-2.1/0b3efdca7a4abf6b3da90091bb884c6c/AndroidManifest.xml:20:5-44
+INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml
+INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml
+		ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml
+		ADDED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/shuiandy/Dropbox/CSCI 571/Homeworks/HW9/HW9/app/src/main/AndroidManifest.xml

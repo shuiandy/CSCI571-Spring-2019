@@ -1,0 +1,34 @@
+:host /deep/ .nav-pills .nav-link.active{
+  background-color: black;
+}
+/* :host /deep/ .nav-pills .nav-link:hover{
+  border: 1px black solid;
+} */
+.nav-link
+{
+  color:black;
+}
+.full-width-table{
+  width: 100%;
+}
+#index{
+  min-width: 5px;
+  padding-left: 2px;
+  padding-right: 10px;
+  text-align: center;
+}
+#images img{
+  max-width: 100px;
+  max-height: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 0;
+  padding-right:10px;
+}
+#image, #price, #ship, #zip, #seller {
+  padding-right: 10px;
+}
+#images{
+  width: 100px;
+  height: 100px;
+}

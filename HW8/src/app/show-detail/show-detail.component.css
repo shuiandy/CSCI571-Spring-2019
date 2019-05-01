@@ -1,0 +1,84 @@
+
+.facebook img{
+  width:38px;
+  height:36px;
+}
+.wishButton{
+  background-color: #ffffff;
+  border: #ffffff;
+}
+.nav-link.active{
+  background-color: black;
+  color:white;
+}
+.mb-tab{
+  margin-bottom:3px;
+}
+.full-width-table {
+  width: 100%;
+}
+#col-md-3{
+  max-width: 40px;
+}
+.card{
+  border: none;
+}
+.carousel-control-next-icon{
+  color: black;
+  background-color: black;
+}
+.carousel-control-prev-icon{
+  background-color: black;
+}
+#photo-tab-img{
+  border: 10px solid black;
+}
+.row-sim{
+  height: 170px;
+  margin-top: 20px;
+}
+.text-title{
+  color: cadetblue;
+}
+.text-price{
+  color: darkseagreen;
+}
+.btn-show{
+  background-color: black;
+  color: white;
+}
+.sortSelect{
+  margin-bottom: 0px;
+}
+
+.selectRow{
+  margin-top: 30px;
+  padding-left: 15px;
+}
+.px-2{
+  margin-top: 15px;
+  margin-left: 15px;
+}
+.col-image{
+  width: 155px;
+  height:155px;
+  margin: 15px;
+}
+.card-text{
+  margin: 0;
+  font-size: 15px;
+}
+
+.sim-img{
+  max-width:170px;
+  max-height: 170px;
+}
+.nav-link{
+  color:black;
+}
+.custom-select{
+  margin-right:20px;
+}
+.btn-show{
+  margin:20px;
+}

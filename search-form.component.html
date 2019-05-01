@@ -1,0 +1,74 @@
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+  <h3 class="display-5" style="text-align: center"><b>Product Search</b></h3>
+  <br>
+  <div class="form-group row">
+    <label class="col-form-label col-md-3">Keyword<span style="color:red;"> *</span></label>
+    <input type="text" formControlName="keyword" class="form-control col-md-6" [formControl]="searchForm.get('keyword')"
+      [class.is-invalid]="searchForm.get('keyword').invalid && searchForm.get('keyword').touched"
+      placeholder="Enter Product Name(eg. iPhone 8)" required>
+    <div class="invalid-feedback">Please enter a keyword.</div>
+  </div>
+  <div class="form-group row">
+    <label class="col-md-3 col-form-label">Category</label>
+    <select class="form-control col-md-2" formControlName="category" id="category">
+      <option selected>All Categories</option>
+      <option *ngFor="let category of categories">{{category}}</option>
+    </select>
+  </div>
+
+  <div class="form-group row" formGroupName="conditions">
+    <label for="condition" class="col-md-3">Condition</label>
+    <div class="md-sm-4" *ngFor="let condition of conditions.controls; let i = index;">
+      <input type="checkbox" [formControl]="condition" />
+      {{conditionsArr[i].name}}
+    </div>
+  </div>
+
+  <div class="form-group row" formGroupName="shipping">
+    <label for="ship" class="col-md-3">Shipping Options</label>
+    <div class="md-sm-4" *ngFor="let ship of shipping.controls; let i = index;">
+      <input type="checkbox" [formControl]="ship" />
+      {{shippingArr[i].name}}
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-3">Distance(Miles)</label>
+    <input type="text" class="form-control col-sm-2" formControlName="distance" id="distance" placeholder="10">
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-3 col-form-label">From<span style="color:red;"> *</span></label>
+    <div class="col-md-6">
+      <div class="custom-control custom-radio">
+        <input type="radio" id="customRadio1" value="local" formControlName="location" class="custom-control-input"
+          checked>
+        <label class="custom-control-label" for="customRadio1">Current location</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input type="radio" id="customRadio2" value="other" formControlName="location" class="custom-control-input">
+        <label class="custom-control-label" for="customRadio2">Other. Please specify zip code:</label>
+      </div>
+      <mat-form-field class="full-width">
+        <input type="text" matInput [formControl]="searchForm.get('locationKey')" [matAutocomplete]="auto"
+           class="form-control autoCom" id="locationKey" formControlName="locationKey" [class.is-invalid]="searchForm.get('locationKey').invalid && searchForm.get('locationKey').touched" required>
+           <div class="invalid-feedback">Please enter a zip code.</div>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+
+    </div>
+  </div>
+
+
+  <button type="submit" class="btn btn-secondary btn-light" id="searchButton" value="Search" [disabled]="searchForm.invalid" ><i class="material-icons md-13">
+      <div style="font-size:70%;">search</div>
+    </i>Search</button>
+  <button type="button" (click)="clear()" class="btn btn-secondary btn-light" id="resetButton"
+    ><i class="material-icons md-13">clear_all
+    </i>Clear</button>
+  <!--<p>Form Value: {{searchForm.value | json}}</p>-->
+  <!--<p>Form Valid: {{searchForm.status}}</p>-->
+</form>

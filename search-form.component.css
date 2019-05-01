@@ -1,0 +1,72 @@
+form {
+  /* padding: 10px 10%; */
+  background:#2d2d30;
+  /* margin: 10px 0; */
+  padding: 30px 12%;
+  color: white;
+  margin-bottom: 2%;
+}
+.col-md-3{
+  padding-left: 0%;
+}
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+
+.col-md-6 {
+  margin: 0px;
+  padding-left: 0px;
+  padding-top: 8px;
+}
+.md-sm-4{
+  padding-right: 15px;
+}
+.full-width{
+  width: 105%;
+}
+
+.col-lg-15 {
+  padding-left: 0px;
+  padding-top: 5px;
+}
+
+.material-icons.md-13 {
+  font-size: 26px;
+  vertical-align: middle;
+}
+.mat-form-field-infix{
+  padding-top:5px;
+}
+#results a:link{
+  color: black;
+  text-decoration: none;
+}
+.btn-link{
+  text-decoration: none;
+  color:black;
+  background-color: white;
+  border: none;
+}
+#results a:hover{
+  color: black;
+  text-decoration: none;
+}
+#wish{
+  margin-left:1%;
+  margin-bottom: 2%;
+}
+:host /deep/ .mat-input-element{
+  border-color:white;
+  background-color:white;
+}
+#resetButton{
+  margin-left: 20px;
+}
+#searchButton{
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.material-icons {
+  vertical-align: middle;
+}

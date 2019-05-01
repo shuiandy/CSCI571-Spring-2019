@@ -1,0 +1,58 @@
+<!-- Details Button -->
+
+<div *ngIf="results && !error">
+  <div class="row">
+    <div class="col-12">
+      <button class="btn btn-light btn-md float-right detailsButton" type="button" [disabled]="HasSelectedResult()"
+        (click)="goForward('results')">
+        Detail &gt;
+      </button>
+    </div>
+  </div>
+  <div>
+    <table class="full-width-table table-striped table-dark table-hover">
+      <thead>
+        <tr>
+          <th scope="col" id="index">#</th>
+          <th scope="col" id="image">Image</th>
+          <th scope="col" id="title">Title</th>
+          <th scope="col" id="price">Price</th>
+          <th scope="col" id="ship">Shipping</th>
+          <th scope="col" id="zip">Zip</th>
+          <th scope="col" id="seller">Seller</th>
+          <th scope="col" id="wishtable">Wish List</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of results | slice:(page-1) * pageSize:(page-1) * pageSize + pageSize;let i = index">
+          <td id="index">{{i+1}}</td>
+          <td id="images"><img src='{{row.image}}'></td>
+          <td id="title"><a (click)="ShowDetails(row, 'results');" ngbTooltip="{{row.title[0]}}" container="body"
+              placement="bottom">{{DisplayDetail(row.title[0])}}</a></td>
+          <td id="price">${{row.price}}</td>
+          <td id="ship">{{row.shippingcost}}</td>
+          <td id="zip">{{row.zip}}</td>
+          <td id="seller">{{row.seller}}</td>
+          <td>
+            <button (click)="dataService.Wishlisted(row);" class="wishButton" type="button">
+              <i class="material-icons add_shopping_cart" [hidden]="dataService.isWished(row)"
+                style="padding-top:5px;">add_shopping_cart</i>
+              <i class="material-icons remove_shopping_cart" [hidden]="!dataService.isWished(row)"
+                style="padding-top:5px; color:darkgoldenrod;">remove_shopping_cart</i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row justify-content-center">
+    <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="results.length">
+      <ng-template ngbPaginationPrevious>&lt; Previous</ng-template>
+      <ng-template ngbPaginationNext>Next &gt; </ng-template>
+    </ngb-pagination>
+  </div>
+</div>
+<!-- No Results Message -->
+<div *ngIf="error">
+  <app-no-results></app-no-results>
+</div>

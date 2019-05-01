@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>CSCI 571 HW4</title>
+    <style>
+        .border {
+        left: 20%;
+        padding-top:10%;
+        position: absolute;
+        text-align: center;
+      }
+      h1 {
+        font-weight: bold;
+        text-align: center;
+      }
+    </style>
+    <script type="text/javascript">
+        function loadURL(url) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.overrideMimeType('application/json');
+            try {
+                xmlhttp.open("GET", url, false);
+                xmlhttp.send();
+                if (xmlhttp.status === 404) {
+                    alert("File not exist!");
+                    return;
+                }
+                if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                    try {
+                        json = JSON.parse(xmlhttp.responseText);
+                    } catch (error) {
+                        alert("Something Wrong!");
+                        return;
+                    }
+                }
+            } catch (error) {
+                json = null;
+                return;
+            }
+            return json;
+        }
+
+        function viewTable(form) {
+            json = form.url.value;
+            if (json === "" || json === null) {
+                alert("Please input a valid URL!");
+                return;
+            }
+            var jsonDoc = loadURL(json);
+            if (json.Mainline === undefined || json === null || json.Mainline === null) {
+                return;
+            }
+            var content = json.Mainline.Table;
+            if (!content.Row) {
+                alert("No Films!");
+                return;
+            }
+            generate_page =
+                "<!DOCTYPE html><html lang='en'><head><title>Highest-grossing films</title></head><body><table border='2'><tbody><tr>";
+            for (var i in content.Header.Data) {
+                generate_page += "<th>" + content.Header.Data[i] + "</th>";
+            }
+            generate_page += "</tr>";
+            for (var j in content.Row) {
+                rows = content.Row[j];
+                generate_page += "<tr><td>" + rows.Title + "</td>";
+                generate_page += "<td>" + rows.Year + "</td><td><ul>";
+                var hubs = rows.Hubs.Hub;
+                var firstline = true;
+                for (var line of hubs) {
+                    if (firstline) {
+                        generate_page += "<li>" + "<b>" + line + "</b>" + "</li>";
+                        firstline = false;
+                    } else {
+                        generate_page += "<li>" + line + "</li>";
+                    }
+                }
+                generate_page += "</ul></td>";
+                generate_page += "<td>" + rows.Gross + "</td>";
+                generate_page += "<td>" + "<a href=" + rows.HomePage + ">" + rows.HomePage + "</a>" + "</td>";
+                generate_page += "<td><img src='" + rows.Logo + "' width = 220, height = 350></td></tr>";
+            }
+            generate_page += "</tbody></table></body></html>";
+            var newWindow = window.open("", "Highest-grossing films", "height = 1000, width = 1200");
+            newWindow.document.write(generate_page);
+            newWindow.document.close();
+        }
+    </script>
+</head>
+
+<body>
+    <form method="POST">
+        <div class="border">
+            <h1>Enter URL for Highest-grossing films List JSON File</h1>
+            <br />
+            <input type="text" name="url" /> <br /><br /><br />
+            <input type="button" name="Submit" value="Submit Query" onclick="viewTable(this.form)" />
+        </div>
+    </form>
+</body>
+
+</html>
