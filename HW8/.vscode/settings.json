@@ -1,0 +1,8 @@
+{
+    "liveServer.settings.multiRootWorkspaceName": "HW8",
+    "appService.zipIgnorePattern": [
+        ".vscode{,/**}"
+    ],
+    "appService.deploySubpath": "",
+    "appService.defaultWebAppToDeploy": "/subscriptions/7ea45493-1f1b-4721-b3a5-0737e4cdd58b/resourceGroups/HW8/providers/Microsoft.Web/sites/HW8"
+}
