@@ -4,9 +4,9 @@ const request = require("request");
 const path = require("path");
 const port = process.env.PORT || 3000;
 const bodyParser = require("body-parser");
-const ebay_api_key = "ShuaiHu-homework-PRD-616e2f5cf-bcc0e9d3";
-const google_search_engine = "009147818535272966384:giu7tdnznrq";
-const google_api_key = "AIzaSyCtcfQHGsw-RlREEhmMSbb06kPQ3qI97gY";
+const ebay_api_key = "";
+const google_search_engine = "";
+const google_api_key = "";
 const categoryDict = {
   "All Categories": "",
   Art: "550",
@@ -21,7 +21,7 @@ const categoryDict = {
 
 app.use(express.static(__dirname));
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*";
+  res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Origin"
@@ -135,7 +135,7 @@ app.post("/search", function(req, res) {
     i++ +
     ").value=" +
     distanceinput;
-  if (location == "other") {
+  if (location === "other") {
     zip_code = "&buyerPostalCode=" + req.body.locationKey;
   } else {
     zip_code = "&buyerPostalCode=" + req.body.zip;
@@ -295,7 +295,7 @@ function getSimilar(similar_url, res) {
           const similar = [];
           var arr = body.getSimilarItemsResponse.itemRecommendations.item;
           arr.forEach(function(arr) {
-            var times = "";
+            let times = "";
             if (arr.timeLeft) {
               for (var i = 0; i < arr.timeLeft.length; i++) {
                 if (arr.timeLeft.charAt(i) === "P") {
@@ -339,7 +339,7 @@ function getPhoto(photo_url, res) {
       if (response.statusCode === 200) {
         if (body.items) {
           const photos = [];
-          var arr = body.items;
+          let arr = body.items;
           arr.forEach(function(arr) {
             photos.push({
               photo: arr.link
