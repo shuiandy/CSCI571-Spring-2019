@@ -31,7 +31,7 @@ app.use(function(req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => res.sendFile(path.join(__dirname)));
-app.listen(port, () => console.log("Running..."));
+app.listen(port);
 app.get("/suggestion", function(req, res) {
   var locationKey = req.query.locationKey;
   var url =
