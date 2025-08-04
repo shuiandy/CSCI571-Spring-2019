@@ -35,7 +35,7 @@
     "rxjs": "~6.5.3",
     "tslib": "^1.9.0",
     "uglify-js": "^3.6.9",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.15.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.19",
