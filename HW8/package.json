@@ -18,7 +18,7 @@
     "@angular/router": "^8.2.14",
     "@babel/polyfill": "^7.7.0",
     "@ng-bootstrap/ng-bootstrap": "^5.1.4",
-    "@types/lodash": "^4.14.123",
+    "@types/lodash": "^4.17.20",
     "angular-svg-round-progressbar": "^3.0.1",
     "bootstrap": "^4.3.1",
     "core-js": "^3.4.1",
