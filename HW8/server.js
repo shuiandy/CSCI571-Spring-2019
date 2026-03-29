@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const request = require("request");
+const fetch = require("node-fetch");
 const path = require("path");
 const port = process.env.PORT || 3000;
 const bodyParser = require("body-parser");
@@ -32,36 +32,34 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => res.sendFile(path.join(__dirname)));
 app.listen(port);
-app.get("/suggestion", function(req, res) {
+app.get("/suggestion", async function(req, res) {
   var locationKey = req.query.locationKey;
   var url =
     "http://api.geonames.org/postalCodeSearchJSON?postalcode_startsWith=" +
     locationKey +
     "&username=shuiandy&country=US&maxRows=5";
-  request(
-    {
-      url: url,
-      json: true
-    },
-    function(err, response, body) {
-      if (response.statusCode === 200) {
-        if (
-          body.postalCodes != null &&
-          body.postalCodes[0] != null &&
-          body.postalCodes[0].postalCode != null
-        ) {
-          const result = [];
-          var arr = body.postalCodes;
-          arr.forEach(function(arr) {
-            result.push(arr.postalCode);
-          });
-          res.send(result);
-        } else {
-          res.send("");
-        }
+  try {
+    const response = await fetch(url);
+    if (response.ok) {
+      const body = await response.json();
+      if (
+        body.postalCodes != null &&
+        body.postalCodes[0] != null &&
+        body.postalCodes[0].postalCode != null
+      ) {
+        const result = [];
+        var arr = body.postalCodes;
+        arr.forEach(function(arr) {
+          result.push(arr.postalCode);
+        });
+        res.send(result);
+      } else {
+        res.send("");
       }
     }
-  );
+  } catch (err) {
+    res.status(500).send("");
+  }
 });
 
 app.post("/search", function(req, res) {
@@ -191,165 +189,156 @@ app.get("/photos", function(req, res) {
   getPhoto(photo_url, res);
 });
 
-function getSearchResult(search_url, res) {
-  request(
-    {
-      url: search_url,
-      json: true
-    },
-    function(err, response, body) {
-      if (response.statusCode === 200) {
-        if (
-          body.findItemsAdvancedResponse &&
-          body.findItemsAdvancedResponse[0] != null &&
-          body.findItemsAdvancedResponse[0].searchResult &&
-          body.findItemsAdvancedResponse[0].searchResult[0].item != null
-        ) {
-          const results = [];
-          var i = 0;
-          var arr = body.findItemsAdvancedResponse[0].searchResult[0].item;
-          arr.forEach(function(arr) {
-            arr.wishlist = false;
-            results.push({
-              index: i++,
-              itemId: arr.itemId,
-              image: arr.galleryURL,
-              link: arr.viewItemURL,
-              title: arr.title,
-              price: arr.sellingStatus[0].currentPrice[0].__value__,
-              shipping: arr.shippingInfo[0].shippingType,
-              return: arr.returnsAccepted,
-              zip: arr.postalCode,
-              seller: arr.sellerInfo[0].sellerUserName,
-              wishlist: arr.wishlist,
+async function getSearchResult(search_url, res) {
+  try {
+    const response = await fetch(search_url);
+    if (response.ok) {
+      const body = await response.json();
+      if (
+        body.findItemsAdvancedResponse &&
+        body.findItemsAdvancedResponse[0] != null &&
+        body.findItemsAdvancedResponse[0].searchResult &&
+        body.findItemsAdvancedResponse[0].searchResult[0].item != null
+      ) {
+        const results = [];
+        var i = 0;
+        var arr = body.findItemsAdvancedResponse[0].searchResult[0].item;
+        arr.forEach(function(arr) {
+          arr.wishlist = false;
+          results.push({
+            index: i++,
+            itemId: arr.itemId,
+            image: arr.galleryURL,
+            link: arr.viewItemURL,
+            title: arr.title,
+            price: arr.sellingStatus[0].currentPrice[0].__value__,
+            shipping: arr.shippingInfo[0].shippingType,
+            return: arr.returnsAccepted,
+            zip: arr.postalCode,
+            seller: arr.sellerInfo[0].sellerUserName,
+            wishlist: arr.wishlist,
 
-              shippingcost:
-                arr.shippingInfo[0].shippingServiceCost[0].__value__ === "0.0"
-                  ? "Free Shipping"
-                  : "$" + arr.shippingInfo[0].shippingServiceCost[0].__value__,
-              shippinglocation: arr.shippingInfo[0].shipToLocations
-                ? arr.shippingInfo[0].shipToLocations
-                : "",
-              handlingtime: arr.shippingInfo[0].handlingTime,
-              expeditedshipping: arr.shippingInfo[0].expeditedShipping,
-              oneday: arr.shippingInfo[0].oneDayShippingAvailable,
+            shippingcost:
+              arr.shippingInfo[0].shippingServiceCost[0].__value__ === "0.0"
+                ? "Free Shipping"
+                : "$" + arr.shippingInfo[0].shippingServiceCost[0].__value__,
+            shippinglocation: arr.shippingInfo[0].shipToLocations
+              ? arr.shippingInfo[0].shipToLocations
+              : "",
+            handlingtime: arr.shippingInfo[0].handlingTime,
+            expeditedshipping: arr.shippingInfo[0].expeditedShipping,
+            oneday: arr.shippingInfo[0].oneDayShippingAvailable,
 
-              feedbackscore: arr.sellerInfo[0].feedbackScore,
-              popularity: arr.sellerInfo[0].positiveFeedbackPercent,
-              feedbackrating: arr.sellerInfo[0].feedbackRatingStar,
-              toprated: arr.sellerInfo[0].topRatedSeller,
-              storename: arr.storeInfo ? arr.storeInfo[0].storeName : "",
-              buyat: arr.storeInfo ? arr.storeInfo[0].storeURL : ""
-            });
+            feedbackscore: arr.sellerInfo[0].feedbackScore,
+            popularity: arr.sellerInfo[0].positiveFeedbackPercent,
+            feedbackrating: arr.sellerInfo[0].feedbackRatingStar,
+            toprated: arr.sellerInfo[0].topRatedSeller,
+            storename: arr.storeInfo ? arr.storeInfo[0].storeName : "",
+            buyat: arr.storeInfo ? arr.storeInfo[0].storeURL : ""
           });
+        });
 
-          res.send(results);
-        } else {
-          res.send("");
-        }
+        res.send(results);
+      } else {
+        res.send("");
       }
     }
-  );
+  } catch (err) {
+    res.status(500).send("");
+  }
 }
-function getDetails(detail_url, res) {
-  request(
-    {
-      url: detail_url,
-      json: true
-    },
-    function(err, response, body) {
-      if (response.statusCode === 200) {
-        if (body.Ack === "Success" && body.Item != null) {
-          const details = [];
-          var arr = body.Item;
-          details.push({
-            title: arr.Title,
-            images: arr.PictureURL,
-            subtitle: arr.Subtitle,
-            price: arr.CurrentPrice.Value,
-            location: arr.Location,
-            return: arr.ReturnPolicy.ReturnsAccepted,
-            specific: arr.ItemSpecifics
-          });
-          res.send(details);
-        } else {
-          res.send("");
-        }
+async function getDetails(detail_url, res) {
+  try {
+    const response = await fetch(detail_url);
+    if (response.ok) {
+      const body = await response.json();
+      if (body.Ack === "Success" && body.Item != null) {
+        const details = [];
+        var arr = body.Item;
+        details.push({
+          title: arr.Title,
+          images: arr.PictureURL,
+          subtitle: arr.Subtitle,
+          price: arr.CurrentPrice.Value,
+          location: arr.Location,
+          return: arr.ReturnPolicy.ReturnsAccepted,
+          specific: arr.ItemSpecifics
+        });
+        res.send(details);
+      } else {
+        res.send("");
       }
     }
-  );
+  } catch (err) {
+    res.status(500).send("");
+  }
 }
-function getSimilar(similar_url, res) {
-  request(
-    {
-      url: similar_url,
-      json: false
-    },
-    function(err, response, body) {
-      if (response.statusCode === 200) {
-        body = JSON.parse(body);
-        if (
-          body.getSimilarItemsResponse.ack === "Success" &&
-          body.getSimilarItemsResponse.itemRecommendations.item !== null
-        ) {
-          const similar = [];
-          var arr = body.getSimilarItemsResponse.itemRecommendations.item;
-          arr.forEach(function(arr) {
-            let times = "";
-            if (arr.timeLeft) {
-              for (var i = 0; i < arr.timeLeft.length; i++) {
-                if (arr.timeLeft.charAt(i) === "P") {
-                  for (var j = i + 1; j < arr.timeLeft.length; j++) {
-                    if (arr.timeLeft.charAt(j) === "D") {
-                      times = arr.timeLeft.substring(i + 1, j);
-                      break;
-                    }
+async function getSimilar(similar_url, res) {
+  try {
+    const response = await fetch(similar_url);
+    if (response.ok) {
+      const body = await response.json();
+      if (
+        body.getSimilarItemsResponse.ack === "Success" &&
+        body.getSimilarItemsResponse.itemRecommendations.item !== null
+      ) {
+        const similar = [];
+        var arr = body.getSimilarItemsResponse.itemRecommendations.item;
+        arr.forEach(function(arr) {
+          let times = "";
+          if (arr.timeLeft) {
+            for (var i = 0; i < arr.timeLeft.length; i++) {
+              if (arr.timeLeft.charAt(i) === "P") {
+                for (var j = i + 1; j < arr.timeLeft.length; j++) {
+                  if (arr.timeLeft.charAt(j) === "D") {
+                    times = arr.timeLeft.substring(i + 1, j);
+                    break;
                   }
-                  break;
                 }
+                break;
               }
-            } else {
-              times = "";
             }
-            similar.push({
-              itemid: arr.itemId,
-              image: arr.imageURL,
-              title: arr.title,
-              link: arr.viewItemURL,
-              price: arr.buyItNowPrice.__value__,
-              cost: arr.shippingCost.__value__,
-              time: times
-            });
+          } else {
+            times = "";
+          }
+          similar.push({
+            itemid: arr.itemId,
+            image: arr.imageURL,
+            title: arr.title,
+            link: arr.viewItemURL,
+            price: arr.buyItNowPrice.__value__,
+            cost: arr.shippingCost.__value__,
+            time: times
           });
-          res.send(similar);
-        } else {
-          res.send("");
-        }
+        });
+        res.send(similar);
+      } else {
+        res.send("");
       }
     }
-  );
+  } catch (err) {
+    res.status(500).send("");
+  }
 }
-function getPhoto(photo_url, res) {
-  request(
-    {
-      url: photo_url,
-      json: true
-    },
-    function(err, response, body) {
-      if (response.statusCode === 200) {
-        if (body.items) {
-          const photos = [];
-          let arr = body.items;
-          arr.forEach(function(arr) {
-            photos.push({
-              photo: arr.link
-            });
+async function getPhoto(photo_url, res) {
+  try {
+    const response = await fetch(photo_url);
+    if (response.ok) {
+      const body = await response.json();
+      if (body.items) {
+        const photos = [];
+        let arr = body.items;
+        arr.forEach(function(arr) {
+          photos.push({
+            photo: arr.link
           });
-          res.send(photos);
-        } else {
-          res.send("");
-        }
+        });
+        res.send(photos);
+      } else {
+        res.send("");
       }
     }
-  );
+  } catch (err) {
+    res.status(500).send("");
+  }
 }

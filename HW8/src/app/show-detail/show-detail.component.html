@@ -51,7 +51,15 @@
       </div>
       <div *ngIf="!detailEmpty">
         <table class="full-width-table table-striped table-dark">
-          <tbody id="table"></tbody>
+          <tbody>
+            <tr *ngFor="let item of detailItems" id="rows">
+              <th style="padding:10px; width:25%;" scope="row" id="col-md-3">{{item.label}}</th>
+              <td *ngIf="!item.isLink">{{item.value}}</td>
+              <td *ngIf="item.isLink">
+                <a href="#photomodal" data-toggle="modal" data-target="#photomodal">{{item.value}}</a>
+              </td>
+            </tr>
+          </tbody>
         </table>
         <div class="modal fade" id="photomodal">
           <div class="modal-dialog">

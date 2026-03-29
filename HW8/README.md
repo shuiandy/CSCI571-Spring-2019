@@ -1,4 +1,27 @@
-# HW8
+# HW8 - eBay Search Application
+
+## XSS Security Fix
+
+### Problem
+The application had a Cross-Site Scripting (XSS) vulnerability in the `show-detail.component.ts` file where user data from eBay API was directly concatenated into HTML strings and inserted into the DOM using `innerHTML`. This could allow malicious scripts to be executed if the API returned data containing script tags.
+
+### Solution
+1. **Removed direct DOM manipulation**: Eliminated the use of `document.getElementById('table').innerHTML = htmltext;`
+2. **Implemented Angular data binding**: Created a `detailItems` array to store structured data
+3. **Used Angular template interpolation**: Replaced HTML string concatenation with Angular's safe `{{}}` interpolation
+4. **Automatic HTML escaping**: Angular's interpolation automatically escapes HTML content, preventing XSS attacks
+
+### Files Modified
+- `src/app/show-detail/show-detail.component.ts`: Removed unsafe DOM manipulation, added structured data approach
+- `src/app/show-detail/show-detail.component.html`: Updated template to use Angular data binding
+
+### Security Benefits
+- **Automatic HTML escaping**: Angular's interpolation prevents script injection
+- **No direct DOM manipulation**: Eliminates the risk of XSS through innerHTML
+- **Type safety**: Structured data approach provides better type checking
+- **Maintainability**: Cleaner, more readable code that follows Angular best practices
+
+## Original README Content
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
 

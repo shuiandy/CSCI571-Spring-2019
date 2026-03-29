@@ -1,4 +1,9 @@
 <?php
+// 设置安全头
+header("X-Content-Type-Options: nosniff");
+header("X-Frame-Options: DENY");
+header("X-XSS-Protection: 1; mode=block");
+header("Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; frame-src 'self'");
 
 $keyword = $category = $new = $used = $miles = $unspecified = $nearby = $zip_code = $geo = '';
 $json = $jsonDetail = null;
@@ -24,36 +29,98 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $condition = '';
     }
     if (isset($_POST['nearby'])) {
-        $geo = rawurlencode($_POST['location']);
-        $miles = rawurlencode($_POST['miles']);
+        // 验证和清理location输入
+        $location = $_POST['location'];
+        if (!preg_match('/^\d{5}$/', $location)) {
+            http_response_code(400);
+            exit(json_encode(['error' => 'Invalid location format']));
+        }
+        $geo = rawurlencode($location);
+        
+        // 验证和清理miles输入
+        $miles_input = $_POST['miles'];
+        if (!preg_match('/^\d+$/', $miles_input) || $miles_input < 1 || $miles_input > 500) {
+            http_response_code(400);
+            exit(json_encode(['error' => 'Invalid miles value']));
+        }
+        $miles = rawurlencode($miles_input);
+        
         $nearby = '&itemFilter(' . $i . ').name=MaxDistance&itemFilter(' . $i . ').value=' . $miles;
-        $zip_code = isset($_POST['zip_code']) ? '&buyerPostalCode=' . $_POST['zip_code'] : '&buyerPostalCode=' . $geo;
+        
+        // 验证和清理zip_code输入
+        if (isset($_POST['zip_code'])) {
+            $zip_input = $_POST['zip_code'];
+            if (!preg_match('/^\d{5}$/', $zip_input)) {
+                http_response_code(400);
+                exit(json_encode(['error' => 'Invalid zip code format']));
+            }
+            $zip_code = '&buyerPostalCode=' . $zip_input;
+        } else {
+            $zip_code = '&buyerPostalCode=' . $geo;
+        }
         $i++;
     }
-    $url = 'http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=ShuaiHu-homework-PRD-616e2f5cf-bcc0e9d3&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=' . $keyword . '&paginationInput.entriesPerPage=20' . $category . '&itemFilter(0).name=HideDuplicateItems&itemFilter(0).value=true' . $local . $free . $condition . $new . $used . $unspecified . $nearby . $zip_code;
+    $ebay_api_key = getenv('EBAY_API_KEY') ?: '';
+    $url = 'http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=' . $ebay_api_key . '&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=' . $keyword . '&paginationInput.entriesPerPage=20' . $category . '&itemFilter(0).name=HideDuplicateItems&itemFilter(0).value=true' . $local . $free . $condition . $new . $used . $unspecified . $nearby . $zip_code;
     $json = file_get_contents($url);
     exit($json);
 }
 if (isset($_REQUEST["id"])) {
+    // 验证itemid输入
     $itemid = $_REQUEST["id"];
+    if (!preg_match('/^\d+$/', $itemid)) {
+        http_response_code(400);
+        exit(json_encode(['error' => 'Invalid item ID']));
+    }
     getDetails($itemid);
 }
 if (isset($_REQUEST["uid"])) {
+    // 验证uid输入
     $itemid = $_REQUEST["uid"];
+    if (!preg_match('/^\d+$/', $itemid)) {
+        http_response_code(400);
+        exit(json_encode(['error' => 'Invalid item ID']));
+    }
     similar($itemid);
 }
 
 function getDetails($itemid)
 {
-    $url = 'http://open.api.ebay.com/shopping?callname=GetSingleItem&responseencoding=JSON&appid=ShuaiHu-homework-PRD-616e2f5cf-bcc0e9d3&siteid=0&version=967&ItemID=' . $itemid . '&IncludeSelector=Description,Details,ItemSpecifics';
+    // 再次验证itemid以确保安全
+    if (!preg_match('/^\d+$/', $itemid)) {
+        http_response_code(400);
+        exit(json_encode(['error' => 'Invalid item ID']));
+    }
+    
+    $ebay_api_key = getenv('EBAY_API_KEY') ?: '';
+    $url = 'http://open.api.ebay.com/shopping?callname=GetSingleItem&responseencoding=JSON&appid=' . $ebay_api_key . '&siteid=0&version=967&ItemID=' . $itemid . '&IncludeSelector=Description,Details,ItemSpecifics';
     $detail = file_get_contents($url);
     $detail_tmp = json_decode($detail);
-    if (file_exists("./tmp/tmp.html")) {
-        unlink("./tmp/tmp.html");
+    // 确保tmp目录存在且安全
+    $tmp_dir = "./tmp";
+    if (!is_dir($tmp_dir)) {
+        mkdir($tmp_dir, 0755, true);
+    }
+    
+    $tmp_file = $tmp_dir . "/tmp.html";
+    
+    // 验证文件路径，防止路径遍历
+    if (realpath($tmp_file) !== realpath($tmp_dir . "/tmp.html")) {
+        http_response_code(400);
+        exit(json_encode(['error' => 'Invalid file path']));
+    }
+    
+    if (file_exists($tmp_file)) {
+        unlink($tmp_file);
     }
     if (isset($detail_tmp->Item->Description)) {
         $detail_desc = $detail_tmp->Item->Description;
-        file_put_contents("./tmp/tmp.html", $detail_desc);
+        // 限制文件大小，防止DoS攻击
+        if (strlen($detail_desc) > 1000000) { // 1MB限制
+            http_response_code(400);
+            exit(json_encode(['error' => 'Description too large']));
+        }
+        file_put_contents($tmp_file, $detail_desc);
     } else {
         $detail_desc = null;
         exit($detail);
@@ -64,7 +131,14 @@ function getDetails($itemid)
 
 function similar($itemid)
 {
-    $url = 'http://svcs.ebay.com/MerchandisingService?OPERATION-NAME=getSimilarItems&SERVICE-NAME=MerchandisingService&SERVICE-VERSION=1.1.0&CONSUMER-ID=ShuaiHu-homework-PRD-616e2f5cf-bcc0e9d3&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&itemId=' . $itemid . '&maxResults=8';
+    // 再次验证itemid以确保安全
+    if (!preg_match('/^\d+$/', $itemid)) {
+        http_response_code(400);
+        exit(json_encode(['error' => 'Invalid item ID']));
+    }
+    
+    $ebay_api_key = getenv('EBAY_API_KEY') ?: '';
+    $url = 'http://svcs.ebay.com/MerchandisingService?OPERATION-NAME=getSimilarItems&SERVICE-NAME=MerchandisingService&SERVICE-VERSION=1.1.0&CONSUMER-ID=' . $ebay_api_key . '&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&itemId=' . $itemid . '&maxResults=8';
     $similar = file_get_contents($url);
     exit($similar);
 }
@@ -389,6 +463,21 @@ function similar($itemid)
 
 
     <script type="text/javascript">
+        // HTML转义函数，防止XSS攻击
+        function escapeHtml(text) {
+            if (text == null || text === undefined) {
+                return '';
+            }
+            var map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.toString().replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+        
         get_zip();
         var form = document.getElementById("search_form");
         var nearby_check = document.getElementById("nearby");
@@ -580,7 +669,7 @@ function similar($itemid)
                             html_text += "<td id='result_img'>N/A</td>";
                         }
                         html_text += "<td><a href='javaScript:void(0)' onclick='show_details(" + jsonObj.itemId + ")'" +
-                            ">" + jsonObj.title + "</a></td>";
+                            ">" + escapeHtml(jsonObj.title) + "</a></td>";
                         // price
                         html_text += "<td> $" + jsonObj.sellingStatus[0].currentPrice[0].__value__ + "</td>";
                         // zipcode
@@ -648,12 +737,12 @@ function similar($itemid)
 
                     if (rows.hasOwnProperty("Title")) {
                         html_text += "<tr><th><b>Title</b></th>";
-                        html_text += "<td>" + rows.Title + "</td></tr>";
+                        html_text += "<td>" + escapeHtml(rows.Title) + "</td></tr>";
                     }
 
                     if (rows.hasOwnProperty("Subtitle")) {
                         html_text += "<tr><th><b>SubTitle</b></th>";
-                        html_text += "<td>" + rows.Subtitle + "</td></tr>";
+                        html_text += "<td>" + escapeHtml(rows.Subtitle) + "</td></tr>";
                     }
 
                     if (rows.hasOwnProperty("CurrentPrice")) {
@@ -663,12 +752,12 @@ function similar($itemid)
 
                     if (rows.hasOwnProperty("Location")) {
                         html_text += "<tr><th><b>Location</b></th>";
-                        html_text += "<td>" + rows.Location + ", " + rows.PostalCode + "</td></tr>";
+                        html_text += "<td>" + escapeHtml(rows.Location) + ", " + escapeHtml(rows.PostalCode) + "</td></tr>";
                     }
 
                     if (rows.hasOwnProperty("Seller")) {
                         html_text += "<tr><th><b>Seller</b></th>";
-                        html_text += "<td>" + rows.Seller.UserID + "</td></tr>";
+                        html_text += "<td>" + escapeHtml(rows.Seller.UserID) + "</td></tr>";
                     }
 
                     if (rows.hasOwnProperty("ReturnPolicy")) {
@@ -679,8 +768,8 @@ function similar($itemid)
 
                     if (rows.hasOwnProperty("ItemSpecifics")) {
                         for (var j = 0; j < rows.ItemSpecifics.NameValueList.length; j++) {
-                            html_text += "<tr><th><b>" + rows.ItemSpecifics.NameValueList[j].Name + "</b></th>";
-                            html_text += "<td>" + rows.ItemSpecifics.NameValueList[j].Value[0] + "</td></tr>";
+                            html_text += "<tr><th><b>" + escapeHtml(rows.ItemSpecifics.NameValueList[j].Name) + "</b></th>";
+                            html_text += "<td>" + escapeHtml(rows.ItemSpecifics.NameValueList[j].Value[0]) + "</td></tr>";
                         }
                     } else {
                         html_text += "<tr><th><b>No Detail Info from Seller</b></th>";
@@ -724,7 +813,7 @@ function similar($itemid)
                 message_div.innerHTML = "<div class='error'><b>No Seller Message found.</b></div>";
             } else {
                 message_div.innerHTML =
-                    '<iframe id="iFrame1" name="iFrame1" width="100%" onload="this.height=iFrame1.document.body.scrollHeight" frameborder="0" src="/tmp/tmp.html"> </iframe>';
+                    '<iframe id="iFrame1" name="iFrame1" width="100%" onload="this.height=iFrame1.document.body.scrollHeight" frameborder="0" src="./tmp/tmp.html"> </iframe>';
             }
         }
 
@@ -763,7 +852,7 @@ function similar($itemid)
                     // title
                     for (var i = 0; i < rowss.length; i++) {
                         html_text += "<td id='similar_title'><a href='javaScript:void(0)' onclick='show_details(" + rowss[i]
-                            .itemId + ")'" + ">" + rowss[i].title + "</a></td>";
+                            .itemId + ")'" + ">" + escapeHtml(rowss[i].title) + "</a></td>";
                     }
                     html_text += "</tr>";
                     html_text += "<tr>";

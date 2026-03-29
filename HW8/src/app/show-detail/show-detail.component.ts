@@ -97,6 +97,9 @@ export class ShowDetailComponent implements OnInit {
   order = 1;
   similarLoad = false;
 
+  // 添加详情数据结构
+  detailItems: any[] = [];
+
   constructor(
     public dataService: DataService,
     private router: Router,
@@ -132,68 +135,62 @@ export class ShowDetailComponent implements OnInit {
     this.getSeller();
     this.getShipping();
   }
+
+
+
   getDetails(id) {
     this.dataService.changeLoad('loading');
     this.route.paramMap.subscribe(params => {
       this.loc = params.get('loc');
     });
     this.dataService.DetailsInfo(id).subscribe(temp => {
-      let htmltext = '';
+      this.detailItems = []; // 清空之前的数据
       if (temp) {
         if (temp[0].images) {
           this.images = temp[0].images;
-          htmltext += '<tr id="rows">';
-          htmltext +=
-            '<th style="padding:10px; width:25%;" scope="row" id="col-md-3">Product Images</th>';
-          htmltext +=
-            '<td><a href="#photomodal" data-toggle="modal" data-target="#photomodal">View Product Images Here</a></td>';
-          htmltext += '</tr>';
+          this.detailItems.push({
+            label: 'Product Images',
+            value: 'View Product Images Here',
+            isLink: true
+          });
         }
         if (temp[0].subtitle) {
           this.subtitle = temp[0].subtitle;
-          htmltext += '<tr id="rows">';
-          htmltext +=
-            '<th style="padding:10px; width:25%;" scope="row" id="col-md-3">Subtitle</th>';
-          htmltext += '<td>' + this.subtitle + '</td>';
-          htmltext += '</tr>';
+          this.detailItems.push({
+            label: 'Subtitle',
+            value: this.subtitle
+          });
         }
         if (temp[0].price) {
           this.price = temp[0].price;
-          htmltext += '<tr id="rows">';
-          htmltext +=
-            '<th style="padding:10px; width:25%;" scope="row" id="col-md-3">Price</th>';
-          htmltext += '<td>$' + this.price + '</td>';
-          htmltext += '</tr>';
+          this.detailItems.push({
+            label: 'Price',
+            value: '$' + this.price
+          });
         }
         if (temp[0].location) {
           this.location = temp[0].location;
-          htmltext += '<tr id="rows">';
-          htmltext +=
-            '<th style="padding:10px; width:25%;" scope="row" id="col-md-3">Location</th>';
-          htmltext += '<td>' + this.location + '</td>';
-          htmltext += '</tr>';
+          this.detailItems.push({
+            label: 'Location',
+            value: this.location
+          });
         }
         if (temp[0].return) {
           this.return = temp[0].return;
-          htmltext += '<tr id="rows">';
-          htmltext +=
-            '<th style="padding:10px; width:25%;" scope="row" id="col-md-3">Return Policy</th>';
-          htmltext += '<td>' + this.return + '</td>';
-          htmltext += '</tr>';
+          this.detailItems.push({
+            label: 'Return Policy',
+            value: this.return
+          });
         }
         if (temp[0].specific) {
           this.specific = temp[0].specific.NameValueList;
           for (const arr of this.specific) {
-            htmltext += '<tr id="rows">';
-            htmltext +=
-              '<th style="padding:10px; width:25%;" scope="row" id="col-md-3">' +
-              arr.Name +
-              '</th>';
-            htmltext += '<td>' + arr.Value[0] + '</td>';
-            htmltext += '</tr>';
+            this.detailItems.push({
+              label: arr.Name,
+              value: arr.Value[0]
+            });
           }
         }
-        document.getElementById('table').innerHTML = htmltext;
       } else {
         this.detailEmpty = true;
       }
