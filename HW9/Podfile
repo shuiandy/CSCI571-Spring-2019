@@ -6,7 +6,7 @@ target 'ProductSearch' do
   use_frameworks!
 
   # Pods for ProductSearch
-  pod 'Alamofire', '~> 5.0.0-beta.4'
+  pod 'Alamofire', '~> 5.10'
   pod "SwiftyJSON"
   pod "McPicker"
   pod "SwiftSpinner"

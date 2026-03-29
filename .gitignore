@@ -189,3 +189,6 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+# CocoaPods
+Pods/
